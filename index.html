@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KJ 만세력 — 자미두수 · 사주 · 작명 · 운세</title>
-<meta name="description" content="사주 명식과 자미두수 명반, 두 사람의 궁합과 작명, 한 해 열두 달의 운세를 한 앱에서.">
+<meta name="description" content="진태양시로 세운 사주 명식과 12궁 자미두수 명반, 두 사람의 궁합과 작명, 한 해 열두 달의 운세를 한 앱에서.">
 <link rel="canonical" href="https://kjfortune.co.kr/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KJ 만세력">
@@ -15,130 +15,250 @@
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="500">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F6F2EA">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-  /* 앱 디자인 규칙과 같게 — 흰 바탕, 먹색 강조, 회색 보조 글자, 옅은 선 */
-  :root {
-    --ink: #191919; --sub: #6B6B70; --ash: #8A8A8F; --line: #E8E8EC;
-    --mute: #F4F4F6; --bg: #FFFFFF;
-    color-scheme: light;
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo",
-                 "Noto Sans KR", "Malgun Gothic", sans-serif;
-    line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere;
-  }
-  a { color: inherit; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  /* 2026-11-09 시안 A(한지와 먹)로 개편 — 한지 바탕, 먹 글씨, 인장 빨강 한 점. 시안 원본은 _sian(깃에 안 올림) */
+  :root { --paper:#F6F2EA; --paper2:#EEE7DA; --ink:#1A1917; --sub:#615B52; --line:#DCD3C3; --seal:#A8322A; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--paper); color:var(--ink); line-height:1.75; word-break:keep-all;
+         font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+         -webkit-font-smoothing:antialiased; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .07 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+  main, header, footer { position:relative; z-index:1; }
+  .serif { font-family:"Noto Serif KR","Nanum Myeongjo",serif; }
+  a { color:inherit; }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* 머리줄 */
+  .top { display:flex; align-items:center; justify-content:space-between; padding-top:22px; padding-bottom:22px; }
+  .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; font-size:19px; letter-spacing:-.01em; }
+  .brand img { width:34px; height:34px; }
+  .soon { font-size:13px; color:var(--sub); border:1px solid var(--line); padding:6px 14px; border-radius:999px; background:rgba(255,255,255,.4); }
 
   /* 첫 화면 */
-  .hero { text-align: center; padding: 56px 20px 36px; }
-  .hero img { width: 112px; height: 112px; }
-  .hero h1 { font-size: 34px; letter-spacing: -0.02em; margin: 18px 0 4px; }
-  .tag { color: var(--sub); font-size: 17px; margin: 0; }
-  .lead { font-size: 17px; margin: 18px auto 0; max-width: 30em; }
-  .cta { display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
-         margin-top: 26px; padding: 12px 26px; border-radius: 999px;
-         background: var(--mute); color: var(--sub); text-decoration: none; }
-  .cta b { color: var(--ink); font-size: 16px; }
-  .cta small { font-size: 13px; }
-  a.cta { background: var(--ink); color: #FFFFFF; }
-  a.cta b { color: #FFFFFF; }
+  .hero { display:grid; grid-template-columns: 1fr 1.25fr; gap:56px; align-items:center; padding-top:40px; padding-bottom:90px; position:relative; }
+  .kicker { display:flex; align-items:center; gap:10px; color:var(--seal); font-weight:600; font-size:14px; letter-spacing:.06em; margin:0 0 18px; }
+  .kicker::before { content:""; width:22px; height:1px; background:var(--seal); }
+  h1 { font-size:clamp(36px,5vw,60px); line-height:1.22; letter-spacing:-.03em; margin:0; font-weight:900; }
+  .lead { font-size:18px; color:var(--sub); margin:26px 0 0; max-width:30em; }
+  .cta { display:flex; flex-wrap:wrap; align-items:center; gap:18px; margin-top:34px; }
+  .btn { display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:#F6F2EA; padding:14px 22px; border-radius:4px; font-weight:600; font-size:15px; }
+  .btn small { opacity:.65; font-weight:500; }
+  .tlink { font-size:15px; text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:2px; }
 
-  /* 화면 4장 — 폰에서는 옆으로 넘기고, 넓은 화면에서는 네 칸 */
-  .shots { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
-           padding: 8px 20px 18px; margin: 0 -20px; -webkit-overflow-scrolling: touch; }
-  .shots figure { flex: 0 0 62%; max-width: 250px; margin: 0; scroll-snap-align: center; }
-  .shots img { width: 100%; height: auto; display: block; border-radius: 18px;
-               border: 1px solid var(--line); background: var(--mute); }
-  .shots figcaption { color: var(--sub); font-size: 14px; text-align: center; margin-top: 10px; }
-  @media (min-width: 760px) {
-    .shots { overflow: visible; display: grid; grid-template-columns: repeat(4, 1fr);
-             padding: 8px 0 18px; margin: 0; }
-    .shots figure { max-width: none; }
-  }
+  .shot { position:relative; }
+  .tab { background:#121212; border-radius:22px; padding:12px; box-shadow:0 30px 60px -20px rgba(40,30,15,.35), 0 0 0 1px rgba(0,0,0,.05); }
+  .tab img { display:block; width:100%; height:auto; border-radius:12px; }
+  .seal { position:absolute; left:-26px; bottom:-30px; width:92px; height:92px; background:var(--seal); color:#F6E9DF;
+          display:grid; grid-template-columns:1fr 1fr; place-items:center; font-weight:700; font-size:30px; line-height:1;
+          padding:8px; transform:rotate(-7deg); box-shadow:0 8px 18px rgba(120,30,20,.25); border-radius:6px; }
+  .branches { position:absolute; right:-6px; top:40px; writing-mode:vertical-rl; letter-spacing:.9em; color:#B9AF9E; font-size:15px; }
 
-  /* 기능 */
-  section.wrap { padding-top: 34px; padding-bottom: 34px; }
-  section + section, .shots-wrap + section { border-top: 1px solid var(--line); }
-  h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 18px; }
-  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
-  .card { border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; }
-  .card h3 { font-size: 17px; margin: 0 0 6px; }
-  .card p { color: var(--sub); font-size: 15px; margin: 0; }
-  .note { color: var(--sub); font-size: 14px; margin: 16px 0 0; }
+  /* 장 제목 */
+  section.block { padding:90px 0; border-top:1px solid var(--line); }
+  .num { color:var(--seal); font-size:15px; letter-spacing:.2em; margin:0 0 12px; }
+  h2 { font-size:clamp(28px,3.4vw,40px); line-height:1.3; letter-spacing:-.02em; margin:0 0 16px; font-weight:700; }
+  .desc { color:var(--sub); font-size:17px; margin:0; max-width:36em; }
+  .center { text-align:center; }
+  .center .desc { margin:0 auto; }
+  .wide-shot { margin-top:46px; }
+
+  /* 기능 — 그림과 글을 번갈아 */
+  .row { display:grid; grid-template-columns:1.25fr 1fr; gap:56px; align-items:center; padding:46px 0; }
+  .row.flip .shot { order:2; }
+  .row h3 { font-size:28px; letter-spacing:-.02em; margin:0 0 12px; font-weight:700; }
+  .row .han { font-size:15px; color:var(--seal); letter-spacing:.3em; margin:0 0 10px; }
+  .row ul { margin:16px 0 0; padding:0; list-style:none; color:var(--sub); }
+  .row li { padding:7px 0 7px 18px; position:relative; border-bottom:1px dashed var(--line); }
+  .row li::before { content:""; position:absolute; left:0; top:17px; width:6px; height:6px; background:var(--seal); border-radius:1px; }
+
+  /* 정확도 */
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:46px; border-top:1px solid var(--ink); }
+  .grid4 > div { padding:26px 22px 8px 0; }
+  .grid4 > div + div { padding-left:22px; border-left:1px solid var(--line); }
+  .big { font-size:34px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
+  .grid4 p { color:var(--sub); font-size:15px; margin:10px 0 0; }
+
+  /* 보관·요금 */
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px; }
+  .card { background:rgba(255,255,255,.55); border:1px solid var(--line); border-radius:6px; padding:28px; }
+  .card h3 { margin:0 0 8px; font-size:20px; }
+  .card p { margin:0; color:var(--sub); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .chips span { font-size:13px; border:1px solid var(--line); padding:4px 12px; border-radius:999px; background:var(--paper); }
 
   /* 채널 */
-  .links { display: flex; flex-wrap: wrap; gap: 10px; }
-  .links a { display: inline-flex; flex-direction: column; padding: 12px 16px; min-width: 150px;
-             border: 1px solid var(--line); border-radius: 14px; text-decoration: none; }
-  .links a span { color: var(--sub); font-size: 13px; }
+  .links { display:grid; grid-template-columns:repeat(4,1fr); margin-top:40px; border-top:1px solid var(--ink); }
+  .links a { text-decoration:none; padding:22px 18px 22px 0; display:flex; flex-direction:column; gap:4px; }
+  .links a + a { padding-left:18px; border-left:1px solid var(--line); }
+  .links b { font-size:18px; }
+  .links span { color:var(--sub); font-size:14px; }
+  .links a:hover b { color:var(--seal); }
 
-  footer.wrap { border-top: 1px solid var(--line); padding-top: 26px; padding-bottom: 40px;
-                color: var(--sub); font-size: 14px; }
-  footer nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; }
-  footer a { color: var(--sub); }
+  footer { border-top:1px solid var(--line); padding:30px 0 50px; color:var(--sub); font-size:14px; }
+  footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+  footer nav { display:flex; gap:18px; flex-wrap:wrap; }
+
+  @media (max-width:900px) {
+    .hero, .row, .two { grid-template-columns:1fr; gap:36px; }
+    .row.flip .shot { order:0; }
+    .branches { display:none; }
+    .grid4, .links { grid-template-columns:1fr 1fr; }
+    .grid4 > div:nth-child(3) { padding-left:0; border-left:0; }
+    .links a:nth-child(3) { padding-left:0; border-left:0; }
+    .grid4 > div:nth-child(n+3), .links a:nth-child(n+3) { border-top:1px solid var(--line); }
+    section.block { padding:64px 0; }
+    .seal { width:70px; height:70px; font-size:23px; left:-8px; bottom:-22px; }
+  }
+  @media (max-width:520px) {
+    .lead { font-size:16px; }
+    .tab { border-radius:14px; padding:7px; }
+    .tab img { border-radius:8px; }
+  }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <img src="assets/emblem.png" width="112" height="112" alt="KJ 만세력 인장">
-  <h1>KJ 만세력</h1>
-  <p class="tag">자미두수 · 사주 · 작명 · 운세</p>
-  <p class="lead">사주 명식과 자미두수 명반, 두 사람의 궁합과 작명, 한 해 열두 달의 운세를 한 앱에서.</p>
-  <!-- 출시하면 아래 span 을 이것으로 바꾼다:
-       <a class="cta" href="https://play.google.com/store/apps/details?id=com.kjlee.kjfortune"><b>Google Play에서 받기</b><small>Android</small></a> -->
-  <span class="cta"><b>출시 준비 중</b><small>Android · Google Play</small></span>
+<header class="wrap top">
+  <a class="brand serif" href="/"><img src="assets/emblem.png" alt="">KJ 만세력</a>
+  <span class="soon">Android 출시 준비 중</span>
 </header>
 
-<div class="wrap shots-wrap">
-  <div class="shots" aria-label="앱 화면">
-    <figure><img src="assets/shot-saju.webp" width="540" height="1201" alt="사주 명식 화면 — 네 기둥과 대운·세운"><figcaption>진태양시로 세운 네 기둥</figcaption></figure>
-    <figure><img src="assets/shot-jami.webp" width="540" height="1201" alt="자미두수 명반 화면 — 12궁과 사화"><figcaption>12궁 명반과 사화를 한눈에</figcaption></figure>
-    <figure><img src="assets/shot-unse.webp" width="540" height="1201" loading="lazy" alt="운세 화면 — 오늘의 운세와 열두 달 흐름"><figcaption>오늘의 운세와 열두 달 흐름</figcaption></figure>
-    <figure><img src="assets/shot-naming.webp" width="540" height="1201" loading="lazy" alt="작명 화면 — 추천 이름과 점수"><figcaption>사주에 맞춘 이름 추천</figcaption></figure>
-  </div>
-</div>
+<main>
+  <section class="wrap hero">
+    <div>
+      <p class="kicker">사주 · 자미두수 만세력</p>
+      <h1 class="serif">명식은 정확하게,<br>풀이는 한 화면에.</h1>
+      <p class="lead">진태양시로 세운 사주 명식과 12궁 자미두수 명반을 나란히 놓고, 대운에서 시운까지 두 학문이 같은 때를 함께 봅니다.</p>
+      <div class="cta">
+        <!-- 출시하면 아래 span 을 이것으로 바꾼다:
+             <a class="btn" href="https://play.google.com/store/apps/details?id=com.kjlee.kjfortune">Google Play에서 받기 <small>Android</small></a> -->
+        <span class="btn">출시 준비 중 <small>Android · Google Play</small></span>
+        <a class="tlink" href="https://www.youtube.com/@kjfortune221">유튜브에서 먼저 보기 →</a>
+      </div>
+    </div>
+    <figure class="shot" style="margin:0">
+      <div class="tab"><img src="assets/hero.webp" width="2000" height="1154" alt="태블릿 화면 — 왼쪽 사주 명식과 대운·세운, 오른쪽 자미두수 명반과 사화"></div>
+      <div class="seal serif" aria-hidden="true"><span>紫</span><span>四</span><span>微</span><span>柱</span></div>
+    </figure>
+    <div class="branches serif" aria-hidden="true">子丑寅卯辰巳午未申酉戌亥</div>
+  </section>
 
-<section class="wrap">
-  <h2>한 앱에서 보는 것</h2>
-  <div class="grid">
-    <div class="card"><h3>제대로 세운 명식</h3><p>출생지 경도와 균시차, 서머타임까지 넣은 진태양시로 시주를 정해요. 절기는 태양 황경으로 직접 구합니다. 간지 여덟 글자로 생년월일을 거꾸로 찾을 수도 있어요.</p></div>
-    <div class="card"><h3>사주</h3><p>네 기둥과 지장간·십성·12운성·신살. 대운에서 세운·월운·일운·시운까지 눌러 가며 봅니다.</p></div>
-    <div class="card"><h3>자미두수</h3><p>12궁 명반과 별의 밝기, 선천·대한·유년 사화를 겹쳐 봅니다. 사주에서 고른 때가 명반에도 따라와요.</p></div>
-    <div class="card"><h3>운세</h3><p>한 해 열두 달의 흐름, 오늘의 운세와 아침 알림, 좋은 날 찾기, 태어나서 80년의 인생 그래프.</p></div>
-    <div class="card"><h3>궁합 · 작명</h3><p>두 사람의 사주와 명반을 나란히 놓고 같은 때로 봅니다. 사주에 맞춘 이름 추천과 감정, 감정서 PDF.</p></div>
-    <div class="card"><h3>명식 보관</h3><p>가족·친구·고객처럼 카테고리로 나눠 보관하고, 중요한 명식은 지문으로 잠가요. 명식마다 메모와 사건 기록.</p></div>
-  </div>
-  <p class="note">만세력과 자미두수 명반, 올해와 작년 운세는 무료로 볼 수 있어요. 나머지는 통합 구독으로 열리며, 처음 구독하면 7일 동안 무료로 써 볼 수 있어요.</p>
-</section>
+  <section class="block">
+    <div class="wrap center">
+      <p class="num serif">一</p>
+      <h2 class="serif">두 학문을 한 화면에</h2>
+      <p class="desc">사주에서 대운을 고르면 자미두수 명반에도 그 대한이 따라옵니다. 반대로도 됩니다. 넓은 태블릿 화면에서는 두 판을 나란히 펼쳐 봅니다.</p>
+      <div class="tab wide-shot"><img loading="lazy" decoding="async" src="assets/saju-jami.webp" width="1600" height="923" alt="태블릿 화면 — 사주 명식과 자미두수 명반"></div>
+    </div>
+  </section>
 
-<section class="wrap">
-  <h2>영상과 글로 먼저 만나 보세요</h2>
-  <div class="links">
-    <a href="https://www.youtube.com/@kjfortune221" rel="noopener">유튜브<span>사주·자미두수 쇼츠</span></a>
-    <a href="https://www.instagram.com/kjfortune_7/" rel="noopener">인스타그램<span>@kjfortune_7</span></a>
-    <a href="https://www.threads.com/@kjfortune_7" rel="noopener">스레드<span>@kjfortune_7</span></a>
-    <a href="https://contents.premium.naver.com/kjfortune/kjfortune7" rel="noopener">네이버 프리미엄 콘텐츠<span>일주·일간 운세 글</span></a>
-  </div>
-</section>
+  <section class="block">
+    <div class="wrap">
+      <p class="num serif">二</p>
+      <h2 class="serif">보는 것은 넓게, 풀이는 쉬운 말로</h2>
 
-<footer class="wrap">
-  <div>케이제이포춘 · 문의 <a href="mailto:kjlee053@gmail.com">kjlee053@gmail.com</a></div>
-  <nav>
-    <a href="privacy/">개인정보처리방침</a>
-    <a href="terms/">이용약관</a>
-    <a href="privacy/delete.html">계정·데이터 삭제</a>
-  </nav>
+      <div class="row">
+        <div class="shot"><div class="tab"><img loading="lazy" decoding="async" src="assets/unse.webp" width="1600" height="923" alt="태블릿 화면 — 운세와 좋은 날 찾기 달력"></div></div>
+        <div>
+          <p class="han serif">運勢</p>
+          <h3 class="serif">한 해 열두 달의 흐름</h3>
+          <ul>
+            <li>열두 달의 등급과 핵심이 되는 달</li>
+            <li>오늘의 운세와 아침 알림</li>
+            <li>그달 날마다 내 운을 칠한 좋은 날 찾기</li>
+            <li>태어나서 80년의 인생 그래프</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row flip">
+        <div class="shot"><div class="tab"><img loading="lazy" decoding="async" src="assets/gunghap.webp" width="1600" height="923" alt="태블릿 화면 — 두 사람의 사주를 나란히 놓은 궁합"></div></div>
+        <div>
+          <p class="han serif">宮合</p>
+          <h3 class="serif">두 사람을 같은 때로</h3>
+          <ul>
+            <li>저장한 명식에서 한 사람을 골라 나란히</li>
+            <li>대운부터 시운까지 두 사람이 함께 움직임</li>
+            <li>사주 궁합과 자미두수 궁합</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="shot"><div class="tab"><img loading="lazy" decoding="async" src="assets/naming.webp" width="1600" height="923" alt="태블릿 화면 — 사주에 맞춘 이름 추천과 감정"></div></div>
+        <div>
+          <p class="han serif">作名</p>
+          <h3 class="serif">사주에 맞춘 이름</h3>
+          <ul>
+            <li>한자를 고르면 내 사주에 맞는 글자인지 바로</li>
+            <li>추천 이름은 점수와 근거로</li>
+            <li>수리·음양·오행·불용문자 감정, 감정서 PDF</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num serif">三</p>
+      <h2 class="serif">명식을 세우는 일부터 정확하게</h2>
+      <p class="desc">같은 생년월일시라도 어디서 태어났는지, 그해 어떤 표준시를 썼는지에 따라 시주가 달라집니다.</p>
+      <div class="grid4">
+        <div><div class="big serif">약 32분</div><p>서울에서 태어났다면 시계 시각보다 당겨지는 진태양시. 출생지 경도와 균시차까지 넣습니다.</p></div>
+        <div><div class="big serif">UTC+8:30</div><p>1908~1911년과 1954~1961년의 한국 표준시와 서머타임을 따로 봅니다.</p></div>
+        <div><div class="big serif">태양 황경</div><p>절기는 태양의 자리로 직접 구합니다. 해는 입춘, 달은 절입 시각에 바뀝니다.</p></div>
+        <div><div class="big serif">간지 → 날짜</div><p>여덟 글자만 알아도 생년월일을 거꾸로 찾아 명식을 세웁니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num serif">四</p>
+      <h2 class="serif">상담하는 분의 명식 노트</h2>
+      <div class="two">
+        <div class="card">
+          <h3 class="serif">명식 보관</h3>
+          <p>카테고리로 나눠 보관하고, 중요한 명식은 지문으로 잠급니다. 명식마다 메모와 사건 기록을 남기고, 로그인하면 여러 기기에서 같은 명식을 봅니다.</p>
+          <div class="chips"><span>가족</span><span>친구</span><span>동료</span><span>고객</span><span>유명인</span><span>출산택일</span></div>
+        </div>
+        <div class="card">
+          <h3 class="serif">무료로 시작</h3>
+          <p>만세력과 자미두수 명반, 올해와 작년 운세는 무료로 볼 수 있어요. 나머지는 통합 구독으로 열리며, 처음 구독하면 7일 동안 무료로 써 볼 수 있어요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num serif">五</p>
+      <h2 class="serif">영상과 글로 먼저 만나 보세요</h2>
+      <div class="links">
+        <a href="https://www.youtube.com/@kjfortune221"><b>유튜브</b><span>사주·자미두수 쇼츠</span></a>
+        <a href="https://www.instagram.com/kjfortune_7/"><b>인스타그램</b><span>@kjfortune_7</span></a>
+        <a href="https://www.threads.com/@kjfortune_7"><b>스레드</b><span>@kjfortune_7</span></a>
+        <a href="https://contents.premium.naver.com/kjfortune/kjfortune7"><b>네이버 프리미엄</b><span>일주·일간 운세 글</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>케이제이포춘 · 문의 <a href="mailto:kjlee053@gmail.com">kjlee053@gmail.com</a></div>
+    <nav><a href="privacy/">개인정보처리방침</a><a href="terms/">이용약관</a><a href="privacy/delete.html">계정·데이터 삭제</a></nav>
+  </div>
 </footer>
 
 </body>
